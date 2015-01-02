@@ -1,0 +1,158 @@
+[  
+    {
+		"file" : "src/package.xml",
+        "info" : "info/package.html",
+		"title" : "The 'package.xml' file.",
+		"description" : "Lets talk about the 'package.xml' file."
+	},
+	{
+		"file" : "src/remindernotes.xml",
+        "info" : "info/remindernotesxml.html",
+		"title" : "The 'ReminderNotes.xml' xml configuration file",
+		"description" : "This file tells mendix what the custom widget configuration is."
+	},
+	{
+		"file" : "src/remindernote.html",
+        "info" : "info/remindernote.html",
+		"title" : "The 'ReminderNote.html' template html file",
+		"description" : "The template for creating a note."
+	},
+	{
+		"file" : "src/remindernotes.html",
+        "info" : "info/remindernotes.html",
+		"title" : "The 'ReminderNotes.html' template html file",
+		"description" : "A container for all your notes."
+	},
+	{
+		"file" : "src/remindersidebar.html",
+        "info" : "info/remindersidebar.html",
+		"title" : "The 'ReminderSidebar.html' template html file",
+		"description" : "The sidebar options."
+	},
+	{
+		"file" : "src/remindernotes.css",
+        "info" : "info/remindernotescss.html",
+		"title" : "The 'ReminderNotes.css' CSS file",
+		"description" : "All the CSS that is used inside your widget."
+	},
+	{
+		"file" : "src/jquery.js",
+        "info" : "info/jquery.html",
+		"title" : "The 'jQuery.js' library",
+		"description" : "A combination of the jQuery library."
+	},
+	{
+		"file" : "src/remindernotesassists.js",
+        "info" : "info/remindernotesassists.html",
+		"title" : "The 'ReminderNotesAssists.js' file.",
+		"description" : "A special library with custom functionality."
+	},
+	{
+		"file" : "src/googlefont.js",
+        "info" : "info/googlefont.html",
+		"title" : "The 'GoogleFont.js' file.",
+		"description" : "To use a google font inside your widget."
+	},
+	{
+		"file" : "src/1.js",
+        "info" : "info/1.html",
+		"title" : "Lets begin with the 'ReminderNotes.js' file!",
+		"description" : "This snippit gives you the bare minimum for a widget."
+	},
+	 {
+		"file" : "src/2.js",
+        "info" : "info/2.html",
+		"title" : "Adding internal variables",
+		"description" : "We need to setup internal variables."
+	},
+    {
+		"file" : "src/3.js",
+        "info" : "info/3.html",
+		"title" : "The 'update' DOJO function",
+		"description" : "Getting the context object."
+	},
+    {
+		"file" : "src/4.js",
+        "info" : "info/4.html",
+		"title" : "The 'startup' DOJO function",
+		"description" : "This is a description for file 3"
+	},
+    {
+		"file" : "src/5.js",
+        "info" : "info/5.html",
+		"title" : "The 'resume' and 'suspend' DOJO functions",
+		"description" : "How to remember state with these functions."
+	},
+    {
+		"file" : "src/5a.js",
+        "info" : "info/5a.html",
+		"title" : "The 'uninitialize' DOJO function",
+		"description" : "The last function called within a Custom Widget lifecycle."
+	},
+    {
+		"file" : "src/6.js",
+        "info" : "info/6.html",
+		"title" : "The '_setupWidget' internal function.",
+		"description" : "We do our widget setup actions in here."
+	},
+    {
+		"file" : "src/7.js",
+        "info" : "info/7.html",
+		"title" : "The '_LoadGoogleFont' internal function",
+		"description" : "This will load the Google font into Mendix and into the custom widget."
+	},
+    {
+		"file" : "src/8.js",
+        "info" : "info/8.html",
+		"title" : "The '_loadJQuery' internal function",
+		"description" : "In this section we will load jQuery into the custom widget."
+	},
+    {
+		"file" : "src/9.js",
+        "info" : "info/9.html",
+		"title" : "The '_renderSideBar' internal function",
+		"description" : "A function that will render and handle the sidebar that is above the feedback widget."
+	},
+    {
+		"file" : "src/10.js",
+        "info" : "info/10.html",
+		"title" : "The '_renderReminderNotesResult' internal function",
+		"description" : "This function will render the notes from the database."
+	},
+    {
+		"file" : "src/11.js",
+        "info" : "info/11.html",
+		"title" : "The '_refreshNote' internal function",
+		"description" : "This function actually compose a note from data."
+	},
+    {
+		"file" : "src/12.js",
+        "info" : "info/12.html",
+		"title" : "The '_setupEvents' internal function",
+		"description" : "This function will attach events to HTML dom elements"
+	},
+    {
+		"file" : "src/13.js",
+        "info" : "info/13.html",
+		"title" : "The '_savePositionSaving' internal function",
+		"description" : "This function will save the position of a note."
+	},
+    {
+		"file" : "src/14.js",
+        "info" : "info/14.html",
+		"title" : "The '_saveContent' internal function",
+		"description" : "This function will save information about a note."
+	},
+    {
+		"file" : "src/15.js",
+        "info" : "info/15.html",
+		"title" : "The '_refreshData' internal function",
+		"description" : "This function will load the notes filtered."
+	},
+    {
+		"file" : "src/16.js",
+        "info" : "info/16.html",
+		"title" : "The '_refreshInterface' internal function",
+		"description" : "This function will start rendering the notes once the notes are loaded."
+	}
+]

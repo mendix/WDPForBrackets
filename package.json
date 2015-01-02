@@ -1,0 +1,18 @@
+{
+    "name": "mendix.wdpforbrackets",
+    "title": "Widget Development Plugin for Brackets",
+    "description": "This extention gives codesnippits for our Mendix Custom Widget workshop.",
+    "homepage": "https://github.com/mendix/WDPForBrackets",
+    "version": "1.0.0",
+    "author": "Gerhard Richard Edens",
+    "license": "Apache 2",
+    "engines": {
+        "brackets": ">=1.0.0"
+    },
+    "i18n": [ "en", "nl" ],
+    "package-i18n": {
+        "nl": {
+            "description": "This extention makes it possible to fastly create Custom Widgets for Mendix from Brackets."
+        }
+    }
+}

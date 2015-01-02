@@ -1,0 +1,399 @@
+/* -------------------------------
+ * Global styles
+ */
+.mx-hidden {
+    display: none;
+}
+
+/* -------------------------------
+ * Coder
+ */
+.mx-coder-functions {
+    max-height: 150px;
+    overflow: scroll;
+}
+.mx-coder-iframe {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.mx-coder-iframe-container {
+    position: relative;
+    width: 80%;
+    height: 100%;
+    background-color: #2B2B2B;
+    float: left;
+}
+.mx-coder-layers {
+    position: relative;
+    width: 20%;
+    height: 100%;
+    background-color: #2B2B2B;
+    float: right;
+    overflow-y: scroll;
+}
+.mx-coder-layers ul {
+    padding: 0;
+    margin: 0;
+}
+.mx-coder-layers li {
+    color: white;
+    list-style: none;
+    height: 50px;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid gray;
+}
+.mx-coder-layers li .mx-layer-show {
+    width: 20px;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    border-right: 1px solid gray;
+}
+.mx-coder-layers li .mx-layer-select {
+    width: 20px;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    border-right: 1px solid gray;
+}
+.mx-coder-top {
+    width: 100%;
+    height: 25px;
+    background-color: #222222;
+    padding-left: 3px;
+}
+.mx-coder-functions {
+    padding-left: 0;
+}
+.mx-properties {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+}
+.mx-properties ul {
+    margin-left: 0;
+    list-style: none;
+}
+.mx-properties li {
+    list-style: none;
+}
+.mx-coder-func-item:hover {
+    background-color: black;
+}
+.mx-coder-func-item.active {
+    color: #8fddff;
+}
+.mx-coder-func-item {
+    cursor: pointer;
+}
+.mx-coder-input {
+    text-align: left;
+    margin-right: 5px;
+    font-size: 13px !important;
+    height: 20px !important;
+    line-height: 10px !important;
+    padding: 0px !important;
+    padding-right: 4px !important;
+    background-color: #2D2E30 !important;
+    color: white !important;
+    width: 93%;
+    padding-left: 5px !important;
+}
+
+/* -------------------------------
+ * Widget Workshop Course
+ */
+.mx-build {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.mx-hidden {
+    display: none;
+}
+.mx-code-snippets-modal-body a.link {
+    font-size: 20px;
+}
+.mx-code-snippets-modal-body .dialog-message-inbetween {
+    position: absolute;
+    top: 300px;
+}
+.mx-code-snippets-modal-body .dialog-message-inbetween .dialog-options {
+    position: absolute;
+    top: 90px;
+    left: 30px;
+    width: 720px;
+    font-size: 14px;
+    color: white;
+}
+.mx-code-snippets-modal-body .dialog-message {
+    position: absolute;
+    left: 30px;
+    top: 50px;
+    width: 740px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.mx-code-snippets-modal-body .dialog-option-small {
+    font-size: 14px;
+    font-style: italic;
+}
+.mx-code-snippets-modal-body .dialog-message-inbetween .dialog-message
+{
+    font-size: 30px;
+    font-weight: bold;
+}
+.mx-code-snippets-modal-body .dialog-message-inbetween .dialog-options
+{
+    font-size: 25px;
+    font-weight: bold;
+}
+.mx-code-snippets-modal-body .dialog-options {
+    position: absolute;
+    left: 30px;
+    top: 100px;
+}
+.mx-code-snippets-modal-body .dialog-options .dialog-option,
+.mx-code-snippets-modal-body .dialog-options .dialog-option-stripe {
+    width: 720px;
+    font-size: 18px;
+    padding-top: 5px;
+    padding-left: 40px;
+    min-height: 30px;
+    background-image: url('../img/button.png');
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+.mx-code-snippets-modal-body .dialog-options .dialog-option-stripe {
+    width: 680px;
+    background-image: url('../img/line.png');
+    padding-left: 80px;
+    background-position: 40px 0;
+}
+.mx-code-snippets-modal-body .line {
+    position: absolute;
+    left: 30px;
+    top: 80px;
+    width: 730px;
+    border-bottom: 1px solid #2786B9;
+}
+.mx-code-snippets-modal-body .dialog-message-intro {
+    position: absolute;
+    left: 180px;
+    top: 270px;
+    font-size: 40px;
+    font-weight: bold;
+}
+.mx-code-snippets-modal-body .dialog-message-slogan {
+    position: absolute;
+    left: 120px;
+    top: 400px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #2786B9;
+}
+.mx-code-snippets-intro {
+    background-image: url('../img/intro.png');
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+.mx-code-snippets-explain {
+    background-image: url('../img/explain.png');
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+.mx-code-snippets-inbetween {
+    background-image: url('../img/inbetween.png');
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+.mx-code-snippets-modal-info {
+    width: 800px;
+    height: 600px;
+    background-color: white;
+}
+.mx-code-snippets-modal-info .mx-code-snippets-modal-body {
+    height: 580px; 
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+.mx-code-snippets-modal-info .mx-code-snippets-modal-footer {
+    height: 40px;
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+}
+.mx-code-snippets-line {
+    width: 450px;
+    height: 400px;
+}
+.mx-code-snippets {
+    position: relative;
+}
+.mx-code-snippets-imgdiv {
+    float: right;
+}
+.mx-code-snippets-hand {
+    cursor: pointer;
+}
+.mx-code-snippets-main {
+    cursor: pointer;
+}
+.mx-code-snippets-container {
+    background-color: rgba(125,125,125,0.5);
+    color: white;
+    padding: 15px;
+    margin: 15px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
+.mx-code-done {
+    background-color: rgba(0,125,0,0.5);
+}
+.mx-code-snippets-logo {
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-bottom: 1px solid silver;
+    padding: 15px;
+}
+.mx-code-snippets-logo {
+    display: inline-block;
+    margin-right: 15px;
+}
+.mx-code-snippets-logo-source {
+    display: inline-block;
+    padding-right: 15px;
+}
+.mx-code-snippets-logo-all {
+    display: inline-block;
+}
+.mx-code-snippets-logo-title {
+    font-weight: bold;
+}
+.mx-code-snippets-logo-description {
+    font-weight: normal;
+}
+.mx-code-snippets-logo-all {
+    display: inline-block;
+}
+.mx-code-snippets-title {
+    font-size: 120%;
+    font-weight: bold;
+}
+.mx-code-snippets-description {
+    font-size: 110%;
+}
+.mx-code-snippets-content-container {
+    position: absolute;
+    overflow-y: scroll;
+    left: 0;
+    top: 25px;
+    right: 0;
+    bottom: 0;
+}
+.mx-code-snippets-modal-body .example {
+    position:absolute;
+    left: 150px;
+    top: 200px;
+    width: 453px;
+    height: 314px;
+    background-image: url('../img/example1.png');
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+.mx-code-snippets-modal-body .brackets
+{
+    position:absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 502px;
+    height: 282px;
+    background-image: url('../img/brackets.png');
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+.mx-code-snippets-modal-body .setup1,
+.mx-code-snippets-modal-body .setup2,
+.mx-code-snippets-modal-body .setup3,
+.mx-code-snippets-modal-body .setup4,
+.mx-code-snippets-modal-body .setup5,
+.mx-code-snippets-modal-body .setup6,
+.mx-code-snippets-modal-body .setup7
+{
+    position:absolute;
+    left: 150px;
+    top: 100px;
+    width: 503px;
+    height: 389px;
+    background-image: url('../img/setup/setup1.png');
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+.mx-code-snippets-modal-body .setup2 {
+    background-image: url('../img/setup/setup2.png');
+}
+.mx-code-snippets-modal-body .setup3 {
+    background-image: url('../img/setup/setup3.png');
+}
+.mx-code-snippets-modal-body .setup4 {
+    background-image: url('../img/setup/setup4.png');
+}
+.mx-code-snippets-modal-body .setup5 {
+    background-image: url('../img/setup/setup5.png');
+}
+.mx-code-snippets-modal-body .setup6 {
+    background-image: url('../img/setup/setup6.png');
+}
+.mx-code-snippets-modal-body .setup7 {
+    background-image: url('../img/setup/setup7.png');
+}
+
+/* -------------------------------
+ * Github
+ */
+.mx-indent {
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    color: rgb(119, 119, 119);
+    display: inline-block;
+    font-family: FontAwesome;
+    font-size: 14px;
+    font-stretch: normal;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    height: 14px;
+    letter-spacing: normal;
+    line-height: 14px;
+    text-rendering: auto;
+    text-shadow: rgb(255, 255, 255) 0px 1px 0px;
+    width: 16px;
+}
+.mx-git-content {
+    max-height: 350px;
+    overflow-y: scroll;
+}
+.mx-git-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.mx-git-content ul li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.mx-github-avatar {
+    width: 40px;
+    vertical-align: top;
+}
+.mx-github-repo {
+    padding-right: 20px;
+}
