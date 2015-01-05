@@ -49,8 +49,8 @@ maxerr: 50, node: true */
      * @param {DomainManager} domainManager The DomainManager for the server
      */
     function init(domainManager) {
-        if (!domainManager.hasDomain("MPKArchiver")) {
-            domainManager.registerDomain("MPKArchiver", {major: 0, minor: 1});
+        if (!domainManager.hasDomain("MendixMPKArchiver")) {
+            domainManager.registerDomain("MendixMPKArchiver", {major: 0, minor: 1});
         }
         domainManager.registerCommand(
             "MPKArchiver",       // domain name

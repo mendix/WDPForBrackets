@@ -100,6 +100,19 @@
     float: right;
     margin-right: 5px;
 }
+.mx-coder-logo-o {
+    background-image: url('../img/mx.png');
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 8px;
+}
+.mx-coder-btn:hover .mx-coder-logo-o,
+.mx-coder-logo-o:hover {
+    background-image: url('../img/mx_black.png');
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 8px;
+}
 
 .mx-properties {
     padding-top: 5px;
