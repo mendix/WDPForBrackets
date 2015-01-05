@@ -27,16 +27,16 @@ define(function (require, exports, module) {
         PreferencesManager = brackets.getModule('preferences/PreferencesManager');
 
     /* Formatters */
-    var Strings = require('extention/beautify/strings'),
-        js_beautify = require('extention/beautify/thirdparty/js-beautify/js/lib/beautify').js_beautify,
-        css_beautify = require('extention/beautify/thirdparty/js-beautify/js/lib/beautify-css').css_beautify,
-        html_beautify = require('extention/beautify/thirdparty/js-beautify/js/lib/beautify-html').html_beautify;
+    var Strings = require('extension/beautify/strings'),
+        js_beautify = require('extension/beautify/thirdparty/js-beautify/js/lib/beautify').js_beautify,
+        css_beautify = require('extension/beautify/thirdparty/js-beautify/js/lib/beautify-css').css_beautify,
+        html_beautify = require('extension/beautify/thirdparty/js-beautify/js/lib/beautify-html').html_beautify;
 
     /* Variables */
     var beautifyOnSave,
         settingsFileName = '.jsbeautifyrc',
         menu = Menus.getMenu(Menus.AppMenuBar.EDIT_MENU),
-        settings = JSON.parse(require('text!extention/beautify/settings.json')),
+        settings = JSON.parse(require('text!extension/beautify/settings.json')),
         debugPreferences = PreferencesManager.getExtensionPrefs('debug'),
         beautifyPreferences = PreferencesManager.getExtensionPrefs(COMMAND_ID),
         oldBeautifyPreferences = PreferencesManager.getExtensionPrefs(OLD_COMMAND_ID),

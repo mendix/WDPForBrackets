@@ -10,7 +10,7 @@ define(function (require, exports, module) {
     var PreferencesManager      = brackets.getModule("preferences/PreferencesManager"),
         _prefs                  = PreferencesManager.getExtensionPrefs("code-folding"),
         stateManager            = PreferencesManager.stateManager.getPrefixedSystem("code-folding"),
-		DefaultSettings			= require("extention/codefolding/DefaultSettings"),
+		DefaultSettings			= require("extension/codefolding/DefaultSettings"),
         store = {},
 		settings = {},
         folds = "folds";

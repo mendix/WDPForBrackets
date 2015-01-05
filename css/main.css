@@ -397,3 +397,6 @@
 .mx-github-repo {
     padding-right: 20px;
 }
+.mx-github-repo-item:hover {
+    background-color: #f1f1f1;
+}

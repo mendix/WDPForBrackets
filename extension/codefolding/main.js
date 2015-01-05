@@ -39,7 +39,7 @@ require.config({
 define(function (require, exports, module) {
     "use strict";
     var CodeMirror = brackets.getModule("thirdparty/CodeMirror2/lib/codemirror");
-    var Strings = require("extention/codefolding/strings");
+    var Strings = require("extension/codefolding/strings");
     var CommandManager          = brackets.getModule("command/CommandManager"),
         DocumentManager         = brackets.getModule("document/DocumentManager"),
         EditorManager           = brackets.getModule("editor/EditorManager"),
@@ -47,7 +47,7 @@ define(function (require, exports, module) {
         KeyBindingManager       = brackets.getModule("command/KeyBindingManager"),
         ExtensionUtils          = brackets.getModule("utils/ExtensionUtils"),
 		Menus					= brackets.getModule("command/Menus"),
-        _prefs                  = require("extention/codefolding/Prefs"),
+        _prefs                  = require("extension/codefolding/Prefs"),
         CODE_FOLD_EXT           = "javascript.code.folding",
         COLLAPSE_ALL            = "codefolding.collapse.all",
         COLLAPSE                = "codefolding.collapse",
@@ -56,7 +56,7 @@ define(function (require, exports, module) {
 		CODE_FOLDING_SETTINGS	= "codefolding.settings",
         gutterName              = "CodeMirror-foldgutter",
 		COLLAPSE_CUSTOM_REGIONS = "codefolding.collapse.customregions",
-		SettingsDialog			= require("extention/codefolding/SettingsDialog");
+		SettingsDialog			= require("extension/codefolding/SettingsDialog");
     
     ExtensionUtils.loadStyleSheet(module, "main.less");
 
@@ -68,12 +68,12 @@ define(function (require, exports, module) {
     //still using slightly modified versions of the foldcode.js and foldgutter.js since we
     //need to modify the gutter click handler to take care of some collapse and expand features
     //e.g. collapsing all children when 'alt' key is pressed
-    require("extention/codefolding/foldhelpers/foldcode")();
-    var foldGutter = require("extention/codefolding/foldhelpers/foldgutter")();
+    require("extension/codefolding/foldhelpers/foldcode")();
+    var foldGutter = require("extension/codefolding/foldhelpers/foldgutter")();
 
-    var indentFold              = require("extention/codefolding/foldhelpers/indentFold"),
-        latexFold               = require("extention/codefolding/foldhelpers/latex-fold"),
-        regionFold              = require("extention/codefolding/foldhelpers/region-fold");
+    var indentFold              = require("extension/codefolding/foldhelpers/indentFold"),
+        latexFold               = require("extension/codefolding/foldhelpers/latex-fold"),
+        regionFold              = require("extension/codefolding/foldhelpers/region-fold");
 
     //register a global fold helper based on indentation folds
     CodeMirror.registerGlobalHelper("fold", "indent", function (mode, cm) {

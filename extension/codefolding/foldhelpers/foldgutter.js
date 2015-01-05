@@ -9,7 +9,7 @@
 define(function (require, exports, module) {
     "use strict";
     var CodeMirror = brackets.getModule("thirdparty/CodeMirror2/lib/codemirror");
-	var prefs = require("extention/codefolding/Prefs");
+	var prefs = require("extension/codefolding/Prefs");
     module.exports = function () {
         function State(options) {
             this.options = options;

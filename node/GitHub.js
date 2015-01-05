@@ -16,7 +16,11 @@ maxerr: 50, node: true */
         
         var client = github.client();
         client.get('/users/' + userName, {}, function (err, status, body, headers) {
-            callback(null, body);
+            if (err !== null) {
+                callback(err, status);
+            } else {
+                callback(null, body);
+            }
         });
         
     }
@@ -25,7 +29,11 @@ maxerr: 50, node: true */
         
         var client = github.client();
         client.get('/users/' + userName + '/repos', {}, function (err, status, body, headers) {
-            callback(null, body);
+            if (err !== null) {
+                callback(err, status);
+            } else {
+                callback(null, body);
+            }
         });
         
     }
@@ -34,7 +42,11 @@ maxerr: 50, node: true */
         
         var client = github.client();
         client.get('/repos/' + userName + '/' + repository + '/releases', {}, function (err, status, body, headers) {
-            callback(null, body);
+            if (err !== null) {
+                callback(err, status);
+            } else {
+                callback(null, body);
+            }
         });
         
     }

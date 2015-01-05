@@ -10,7 +10,7 @@
 define(function (require, exports, module) {
     "use strict";
     var CodeMirror = brackets.getModule("thirdparty/CodeMirror2/lib/codemirror"),
-		prefs = require("extention/codefolding/Prefs");
+		prefs = require("extension/codefolding/Prefs");
 
     module.exports = function () {
         function doFold(cm, pos, options, force) {

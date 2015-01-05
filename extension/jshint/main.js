@@ -12,7 +12,7 @@ define(function (require, exports, module) {
             "globals": {}
         };
 
-    require("extention/jshint/jshint/jshint");
+    require("extension/jshint/jshint/jshint");
     
     var PREF_SCAN_PROJECT_ONLY = "scanProjectOnly",
         JSHINT_NAME = "JSHint";

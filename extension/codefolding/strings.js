@@ -33,6 +33,6 @@
 define(function (require, exports, module) {
     "use strict";
 
-    module.exports = require("i18n!extention/codefolding/nls/strings");
+    module.exports = require("i18n!extension/codefolding/nls/strings");
 
 });

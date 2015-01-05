@@ -8,12 +8,12 @@
 define(function (require, exports, module) {
     "use strict";
 	var Dialogs = brackets.getModule("widgets/Dialogs"),
-		DefaultSettings = require("extention/codefolding/DefaultSettings"),
-		Strings = require("i18n!extention/codefolding/nls/strings"),
+		DefaultSettings = require("extension/codefolding/DefaultSettings"),
+		Strings = require("i18n!extension/codefolding/nls/strings"),
 		CommandManager = brackets.getModule("command/CommandManager"),
-		settingsTemplate = require("text!extention/codefolding/htmlTemplates/settings-dialog.html"),
-		reloadTemplate = require("text!extention/codefolding/htmlTemplates/reload-dialog.html"),
-		preferences = require("extention/codefolding/Prefs");
+		settingsTemplate = require("text!extension/codefolding/htmlTemplates/settings-dialog.html"),
+		reloadTemplate = require("text!extension/codefolding/htmlTemplates/reload-dialog.html"),
+		preferences = require("extension/codefolding/Prefs");
 	
 	function setFormValues(prefs) {
 		$("#min-fold-size").val(prefs.minFoldSize || 2);

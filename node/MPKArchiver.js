@@ -12,28 +12,36 @@ maxerr: 50, node: true */
      */
     function cmdCreateMPK(widgetName, source, destination, callback) {
 
-        var file_system = require('fs');
-        var archiver = require('archiver');
+        try {
+            
+            var file_system = require('fs');
+            var archiver = require('archiver');
 
-        var output = file_system.createWriteStream(destination + '/' + widgetName + '.mpk');
-        var archive = archiver('zip');
+            var output = file_system.createWriteStream(destination + '/' + widgetName + '.mpk');
+            var archive = archiver('zip');
 
-        output.on('close', function () {
-            console.log(archive.pointer() + ' total bytes');
-            console.log('archiver has been finalized and the output file descriptor has closed.');
-        });
+            output.on('close', function () {
+                console.log(archive.pointer() + ' total bytes');
+                console.log('archiver has been finalized and the output file descriptor has closed.');
+            });
 
-        archive.on('error', function(err){
-            throw err;
-        });
+            archive.on('error', function(err){
+                throw err;
+            });
 
-        archive.pipe(output);
-        archive.bulk([
-            { expand: true, cwd: source, src: ['**'], dest: ''}
-        ]);
-        archive.finalize();
-        
-        callback(null, 'we are done');
+            archive.pipe(output);
+            archive.bulk([
+                { expand: true, cwd: source, src: ['**'], dest: ''}
+            ]);
+            archive.finalize();
+
+            callback(null, 'we are done');
+            
+        } catch(e) {
+            
+            callback(e, 'we are not done');
+            
+        }
     }
     
     /**

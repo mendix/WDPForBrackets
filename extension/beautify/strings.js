@@ -10,6 +10,6 @@
 define(function (require, exports, module) {
     'use strict';
 
-    module.exports = require('i18n!extention/beautify/nls/strings');
+    module.exports = require('i18n!extension/beautify/nls/strings');
 
 });
