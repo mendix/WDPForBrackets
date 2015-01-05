@@ -63,10 +63,44 @@
     height: 25px;
     background-color: #222222;
     padding-left: 3px;
+    background: #515159; /* Old browsers */
+    background: -moz-linear-gradient(top,  #515159 0%, #28343b 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#515159), color-stop(100%,#28343b)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #515159 0%,#28343b 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #515159 0%,#28343b 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #515159 0%,#28343b 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #515159 0%,#28343b 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#515159', endColorstr='#28343b',GradientType=0 ); /* IE6-9 */
 }
 .mx-coder-functions {
     padding-left: 0;
 }
+.mx-coder-btn {
+    background-image: none;
+    background-color: transparent;
+    color: white;
+    cursor: default;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: normal;
+    border: 1px solid black;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    box-shadow: inset 0 1px rgba(255,255,255,0.5);
+    -webkit-font-smoothing: antialiased;
+    text-shadow: none;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 1px;    
+}
+.mx-coder-hide {
+    float: right;
+    margin-right: 5px;
+}
+
 .mx-properties {
     padding-top: 5px;
     padding-bottom: 5px;
