@@ -65,12 +65,7 @@ maxerr: 50, node: true */
             cmdGetUser,   // command handler function
             true,          // this command is synchronous in Node
             "Returns the github user",
-            [{ name: "userName", // parameters
-                type: "string",
-                description: "The username."}],
-            [{name: "body", // return values
-                type: "object",
-                description: "JSON structure of the user."}]
+            [{ name: "userName", type: "string", description: "The username."}, {name: "body", type: "object", description: "JSON structure of the user."}]
         );
         domainManager.registerCommand(
             "GitHub",       // domain name
@@ -78,12 +73,7 @@ maxerr: 50, node: true */
             cmdGetUserRepos,   // command handler function
             true,          // this command is synchronous in Node
             "Returns the github user repos",
-            [{ name: "userName", // parameters
-                type: "string",
-                description: "The username."}],
-            [{name: "body", // return values
-                type: "object",
-                description: "JSON structure of the user's public repositories."}]
+            [{ name: "userName", type: "string", description: "The username."}, {name: "body", type: "object", description: "JSON structure of the user's public repositories."}]
         );
         domainManager.registerCommand(
             "GitHub",       // domain name
@@ -91,11 +81,7 @@ maxerr: 50, node: true */
             cmdGetUserRepoReleases,   // command handler function
             true,          // this command is synchronous in Node
             "Returns the github releases",
-            [{ name: "userName", type: "string", description: "The username." },
-             { name: "repository", type: "string", description: "The repository name." }],
-            [{name: "memory", // return values
-                type: "number",
-                description: "JSON structure of the user's public repository releases"}]
+            [{ name: "userName", type: "string", description: "The username." }, { name: "repository", type: "string", description: "The repository name." }, {name: "memory", type: "number", description: "JSON structure of the user's public repository releases"}]
         );
     }
     

@@ -25,7 +25,7 @@ maxerr: 50, node: true */
                 console.log('archiver has been finalized and the output file descriptor has closed.');
             });
 
-            archive.on('error', function(err){
+            archive.on('error', function (err) {
                 throw err;
             });
 
@@ -37,7 +37,7 @@ maxerr: 50, node: true */
 
             callback(null, 'we are done');
             
-        } catch(e) {
+        } catch (e) {
             
             callback(e, 'we are not done');
             
@@ -58,15 +58,7 @@ maxerr: 50, node: true */
             cmdCreateMPK,   // command handler function
             true,          // this command is synchronous in Node
             "Creates an MPK from a directory.",
-            [{  name: "widgetName", // return values
-                type: "string",
-                description: "The name of the widget."},
-             {  name: "pathFrom", // parameters
-                type: "string",
-                description: "The source directory path to start zipping."},
-             {  name: "pathTo", // return values
-                type: "string",
-                description: "The destination directory path to place the endresult."}]
+            [{ name: "widgetName", type: "string", description: "The name of the widget."}, { name: "pathFrom", type: "string", description: "The source directory path to start zipping."}, { name: "pathTo", type: "string", description: "The destination directory path to place the endresult."}]
         );
     }
     
