@@ -1,4 +1,4 @@
-# Mendix For Brackets
+# Widget Development Plugin For Brackets
 
 This plugin creates an IDE for creating custom widgets.
 
