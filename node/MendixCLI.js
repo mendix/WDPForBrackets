@@ -11,16 +11,17 @@
      */
     function cmdStartMendix(path, callback) {
     
-        var exec = require('child_process').execFile;
+        var childprocess = require('child_process');
         var func = function(path){
-            var newPath = 'C:/Program Files (x86)/Mendix/Version Selector/VersionSelector.exe --file=' + path + '';
-               
-            newPath = newPath.split('/').join('\\');
+            //var newPath = 'C:/Program Files (x86)/Mendix/Version Selector/VersionSelector.exe --file=' + path + '';
+            var newPath = path;
+            
+            //newPath = newPath.split('/').join('\\');
             
             console.log("fun() start");
             console.log(newPath);
             
-            exec(newPath, function(err, data) {  
+            childprocess.exec(newPath, function(err, data) {  
                 console.log(err)
                 console.log(data.toString());                       
             });  
