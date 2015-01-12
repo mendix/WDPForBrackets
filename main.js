@@ -16,6 +16,7 @@ define(function (require, exports, module) {
         JSBeautify                      = require('extension/beautify/main'),
         CodeFolding                     = require('extension/codefolding/main'),
         JSHint                          = require('extension/jshint/main'),
+        JSMinify                        = require('extension/brackets-minifier/main'),
         
         // Snippets
         MendixGitHubManager             = require('lib/MendixGitHubManager'),
