@@ -1,0 +1,20 @@
+{
+    "name": "brackets-indentator",
+    "title": "Indentator",
+    "description": "Re-indent a document using your current indentation settings.",
+    "homepage": "https://github.com/ahuth/brackets-indentator",
+    "version": "1.0.3",
+    "author": "Andrew Huth (https://github.com/ahuth)",
+    "license": "Unlicense",
+    "categories": "formatting",
+    "keywords": [
+        "format",
+        "formatting",
+        "indent",
+        "autoindent",
+        "tabs"
+    ],
+    "engines": {
+        "brackets": ">=0.36.0"
+    }
+}

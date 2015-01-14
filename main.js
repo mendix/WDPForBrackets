@@ -17,6 +17,7 @@ define(function (require, exports, module) {
         CodeFolding                     = require('extension/codefolding/main'),
         JSHint                          = require('extension/jshint/main'),
         JSMinify                        = require('extension/brackets-minifier/main'),
+        JSIndentator                    = require('extension/brackets-indentator/main'),
         
         // Snippets
         MendixGitHubManager             = require('lib/MendixGitHubManager'),
