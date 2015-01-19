@@ -2,65 +2,86 @@
 /*global */
 (function () {
     "use strict";
-        
+
     /**
      * @private
      * Handler function for the simple.getMemory command.
      * @param {boolean} total If true, return total memory; if false, return free memory only.
      * @return {number} The amount of memory.
      */
-    function cmdGetRemoteFile(url, local, callback) {
+    function _downloadAndUnzip(fs, request, local, filename, unzip, url) {
+        var headers = {
+            'User-Agent':       'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36',
+            'accept'    :       'application/octet-stream'
+        };
+
+        // Configure the request
+        var options = {
+            uri: url,
+            method: 'GET',
+            headers: headers,
+            followRedirect: true,
+            gzip: true
+        };
+
+        console.log('ExternalIO - options - ' + JSON.stringify(options));
+        console.log('ExternalIO - started downloading - ' + local + '/' + filename);
         
-        try {
-            /*var http = require('http');
-            var fs = require('fs');
-
-            console.log('ExternalIO - download url: ' + url);
-            console.log('ExternalIO - save to local: ' + local);
-
-            var file = fs.createWriteStream(local);
-            var request = http.get(url, function (response) {
-                response.pipe(file);
-                file.on('finish', function () {
-                    file.close(callback(null, 'ExternalIO - Its done...'));
-                });
-            });*/
-            
-            var http = require('http'),
-                fs = require('fs'),
-                request = require('request'),
-                out = fs.createWriteStream(local); // For saving NSE Equity bhavcopy
-
-            // Downloading NSE Bhavcopy
-            var req = request(
-                {
-                    method: 'GET',
-                    uri: url,
-                    headers: {
-                        "User-Agent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.97 Safari/537.11",
-                        "Referer": "http://www.nseindia.com/products/content/all_daily_reports.htm",
-                        "Accept-Encoding": "gzip,deflate,sdch",
-                        "encoding": "null",
-                        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-                        "Cookie": "cookie"
-                    }
-                }
-            );
-
-            req.pipe(out);
-            req.on('end', function() {
+        request(options).pipe(fs.createWriteStream(local + '/' + filename)).on('finish', function () {
+            console.log('ExternalIO - file - ' + local + '/' + filename + ' - was downloaded!');
+            fs.createReadStream(local + '/' + filename).pipe(unzip.Extract({ path: local })).on('finish', function () {
+                fs.unlink(local + '/' + filename);
+                console.log('ExternalIO - file unlinked - ' + local + '/' + filename);
+                console.log('ExternalIO - unpacked file - ' + local);
             });
-            fs.on('finish', function () {
-                fs.close(callback(null, 'ExternalIO - Its done...'));
-            });
-            
-        } catch (e) {
-            console.log('ExternalIO - oopps something goes terribly wrong: ' + e.message);
-            callback(e.message, 'ExternalIO - Its done...');
-        }
-        
+        });
     }
-    
+
+    function cmdGetRemoteFile(url, local, filename, callback) {
+
+        var directory = null,
+            fs = require('fs'),
+            unzip = require('unzip'),
+            sysPath = process.cwd(),
+            request = require('request');
+
+        console.log('ExternalIO - download url: ' + url);
+        console.log('ExternalIO - save to local: ' + local);
+        console.log('ExternalIO - file: ' + filename);
+        console.log('ExternalIO - system path: ' + process.cwd());
+        console.log('ExternalIO - try change process dir. ' + local);
+
+        process.chdir(local);
+
+        console.log('ExternalIO - try file exists: ' + filename);
+        fs.exists(local + '/' + filename, function (exists) {
+            if (exists) {
+                console.log('ExternalIO - file exists: ' + filename);
+                fs.unlink(local + '/' + filename, function (err) {
+                    if (err) {
+                        console.log('ExternalIO - file unlink error: ' + filename);
+                        throw err;
+                    }
+                    console.log('ExternalIO - try to download to new file stream: ' + url + ' - ' + filename);
+
+                    _downloadAndUnzip(fs, request, local, filename, unzip, url);
+
+                    console.log('ExternalIO - try change process dir back to original. ' + sysPath);
+                    process.chdir(sysPath);
+                });
+            } else {
+                console.log('ExternalIO - file does not exists: ' + filename);
+                console.log('ExternalIO - try to download to new file stream: ' + url + ' - ' + filename);
+
+                _downloadAndUnzip(fs, request, local, filename, unzip, url);
+
+                console.log('ExternalIO - try change process dir back to original. ' + sysPath);
+                process.chdir(sysPath);
+            }
+        });
+
+    }
+
     /**
      * Initializes the test domain with several test commands.
      * @param {DomainManager} domainManager The DomainManager for the server
@@ -78,7 +99,7 @@
             [{ name: "url", type: "string", description: "The url to pickup the file from."}, { name: "local", type: "string", description: "The local file to save to."}]
         );
     }
-    
+
     exports.init = init;
-    
+
 }());
