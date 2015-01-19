@@ -51,6 +51,20 @@ maxerr: 50, node: true */
         
     }
     
+    function cmdGetUserRepoRelease(userName, repository, release, callback) {
+        
+        var client = github.client();
+        client.get('/repos/' + userName + '/' + repository + '/releases/' + release, {}, function (err, status, body, headers) {
+            if (err !== null) {
+                callback(err, status);
+            } else {
+                callback(null, body);
+            }
+        });
+        
+    }
+    
+    
     /**
      * Initializes the test domain with several test commands.
      * @param {DomainManager} domainManager The DomainManager for the server
@@ -82,6 +96,14 @@ maxerr: 50, node: true */
             true,          // this command is synchronous in Node
             "Returns the github releases",
             [{ name: "userName", type: "string", description: "The username." }, { name: "repository", type: "string", description: "The repository name." }, {name: "memory", type: "number", description: "JSON structure of the user's public repository releases"}]
+        );
+        domainManager.registerCommand(
+            "GitHub",       // domain name
+            "getUserRepoRelease",    // command name
+            cmdGetUserRepoRelease,   // command handler function
+            true,          // this command is synchronous in Node
+            "Returns the github releases",
+            [{ name: "userName", type: "string", description: "The username." }, { name: "repository", type: "string", description: "The repository name." }, { name: "release", type: "string", description: "The release name." }, {name: "memory", type: "number", description: "JSON structure of the user's public repository releases"}]
         );
     }
     
