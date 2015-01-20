@@ -9,7 +9,7 @@
      * @param {boolean} total If true, return total memory; if false, return free memory only.
      * @return {number} The amount of memory.
      */
-    function _downloadAndUnzip(fs, request, local, filename, unzip, url) {
+    function _downloadAndUnzip(fs, request, local, filename, widgetName, author, version, zip, url, sysPath, callbackToBeginning) {
         var headers = {
             'User-Agent':       'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36',
             'accept'    :       'application/octet-stream'
@@ -26,30 +26,135 @@
 
         console.log('ExternalIO - options - ' + JSON.stringify(options));
         console.log('ExternalIO - started downloading - ' + local + '/' + filename);
-        
-        request(options).pipe(fs.createWriteStream(local + '/' + filename)).on('finish', function () {
-            console.log('ExternalIO - file - ' + local + '/' + filename + ' - was downloaded!');
-            fs.createReadStream(local + '/' + filename).pipe(unzip.Extract({ path: local })).on('finish', function () {
-                fs.unlink(local + '/' + filename);
-                console.log('ExternalIO - file unlinked - ' + local + '/' + filename);
-                console.log('ExternalIO - unpacked file - ' + local);
+
+        fs.readdir(local, function (err, files) {
+            if (err) {
+                throw err;
+            }
+            if (files.length > 0) {
+                throw 'the directory is not empty';
+            }
+            request(options).pipe(fs.createWriteStream(local + '/' + filename)).on('finish', function () {
+                console.log('ExternalIO - file - ' + local + '/' + filename + ' - was downloaded!');
+                zip.unzip(local + '/' + filename, local, function () {
+                    fs.unlink(local + '/' + filename);
+                    console.log('ExternalIO - file unlinked - ' + local + '/' + filename);
+                    console.log('ExternalIO - unpacked file - ' + local);
+                    console.log('ExternalIO - rename - ' + local + '/src/WidgetName/' + ' - to - ' + local + '/src/' + widgetName + '/');
+
+                    // Rename 'src/WidgetName'
+                    fs.rename(local + '/src/WidgetName/', local + '/src/' + widgetName + '/', function (err) {
+                        if (err) {
+                            throw err;
+                        }
+
+                        console.log('ExternalIO - rename - ' + local + '/src/' + widgetName + '/WidgetName.xml' + ' - to - ' + local + '/src/' + widgetName + '/' + widgetName + '.xml');
+                        // Rename 'src/WidgetName/WidgetName.xml'
+                        fs.rename(local + '/src/' + widgetName + '/WidgetName.xml', local + '/src/' + widgetName + '/' + widgetName + '.xml', function (err) {
+                            if (err) {
+                                throw err;
+                            }
+
+                            console.log('ExternalIO - rename - ' + local + '/src/' + widgetName + '/widget/WidgetName.js' + ' - to - ' + local + '/src/' + widgetName + '/widget/' + widgetName + '.js');
+                            // Rename 'src/WidgetName/widget/WidgetName.js'
+                            fs.rename(local + '/src/' + widgetName + '/widget/WidgetName.js', local + '/src/' + widgetName + '/widget/' + widgetName + '.js', function (err) {
+                                if (err) {
+                                    throw err;
+                                }
+
+                                console.log('ExternalIO - rename - ' + local + '/src/' + widgetName + '/widget/ui/WidgetName.css' + ' - to - ' + local + '/src/' + widgetName + '/widget/ui/' + widgetName + '.css');
+                                // Rename 'src/WidgetName/widget/ui/WidgetName.css'
+                                fs.rename(local + '/src/' + widgetName + '/widget/ui/WidgetName.css', local + '/src/' + widgetName + '/widget/ui/' + widgetName + '.css', function (err) {
+                                    if (err) {
+                                        throw err;
+                                    }
+
+                                    console.log('ExternalIO - rename - ' + local + '/src/' + widgetName + '/widget/templates/WidgetName.html' + ' - to - ' + local + '/src/' + widgetName + '/widget/templates/' + widgetName + '.html');
+                                    // Rename 'src/WidgetName/widget/templates/WidgetName.css'
+                                    fs.rename(local + '/src/' + widgetName + '/widget/templates/WidgetName.html', local + '/src/' + widgetName + '/widget/templates/' + widgetName + '.html', function (err) {
+                                        if (err) {
+                                            throw err;
+                                        }
+
+                                        // Change 'src/WidgetName/WidgetName.xml'
+                                        var editFile = function (path, widgetName, author, version, callback) {
+                                            console.log('ExternalIO - alter file - ' + path + ' - rename WidgetName to ' + widgetName);
+                                            fs.readFile(path, 'utf8', function (err, data) {
+                                                if (err) {
+                                                    throw err;
+                                                }
+                                                var d = new Date();
+                                                data = data.split('WidgetName').join(widgetName);
+                                                data = data.split('{{author}}').join(author);
+                                                data = data.split('{{date}}').join(d.toUTCString());
+                                                data = data.split('{{version}}').join(version);
+                                                fs.unlink(path, function (err) {
+                                                    if (err) {
+                                                        throw err;
+                                                    }
+                                                    fs.writeFile(path, data, function (err) {
+                                                        if (err) {
+                                                            throw err;
+                                                        }
+                                                        callback();
+                                                    });
+                                                });
+                                            });
+                                        };
+
+                                        editFile(local + '/src/package.xml', widgetName, author, version, function () {
+
+                                            editFile(local + '/src/' + widgetName + '/' + widgetName + '.xml', widgetName, author, version, function () {
+
+                                                editFile(local + '/src/' + widgetName + '/widget/' + widgetName + '.js', widgetName, author, version, function () {
+
+                                                    editFile(local + '/src/' + widgetName + '/widget/ui/' + widgetName + '.css', widgetName, author, version, function () {
+
+                                                        editFile(local + '/src/' + widgetName + '/widget/templates/' + widgetName + '.html', widgetName, author, version, function () {
+
+                                                            console.log('We execute that we are done...');
+                                                            // Renamed all and voila truly done..
+                                                            callbackToBeginning();
+
+                                                        });
+
+                                                    });
+
+                                                });
+
+                                            });
+                                        });
+
+                                    });
+
+                                });
+
+                            });
+
+                        });
+
+
+                    });
+
+                });
             });
         });
+        
     }
 
-    function cmdGetRemoteFile(url, local, filename, callback) {
+    function cmdGetRemoteFile(url, local, filename, widgetName, author, version, callback) {
 
         var directory = null,
             fs = require('fs'),
-            unzip = require('unzip'),
+            zip = require('bauer-zip'),
             sysPath = process.cwd(),
             request = require('request');
 
         console.log('ExternalIO - download url: ' + url);
         console.log('ExternalIO - save to local: ' + local);
         console.log('ExternalIO - file: ' + filename);
-        console.log('ExternalIO - system path: ' + process.cwd());
-        console.log('ExternalIO - try change process dir. ' + local);
+
+        local += '/';
 
         process.chdir(local);
 
@@ -63,20 +168,12 @@
                         throw err;
                     }
                     console.log('ExternalIO - try to download to new file stream: ' + url + ' - ' + filename);
-
-                    _downloadAndUnzip(fs, request, local, filename, unzip, url);
-
-                    console.log('ExternalIO - try change process dir back to original. ' + sysPath);
-                    process.chdir(sysPath);
+                    _downloadAndUnzip(fs, request, local, filename, widgetName, author, version, zip, url, sysPath, callback);
                 });
             } else {
                 console.log('ExternalIO - file does not exists: ' + filename);
                 console.log('ExternalIO - try to download to new file stream: ' + url + ' - ' + filename);
-
-                _downloadAndUnzip(fs, request, local, filename, unzip, url);
-
-                console.log('ExternalIO - try change process dir back to original. ' + sysPath);
-                process.chdir(sysPath);
+                _downloadAndUnzip(fs, request, local, filename, widgetName, author, version, zip, url, sysPath, callback);
             }
         });
 

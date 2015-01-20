@@ -1,13 +1,117 @@
 /* -------------------------------
- * Global styles
- */
+* Facebook
+*/
+.fb-like { 
+    width: 180px !important;
+    height: 25px !important;
+}
+.fb-like span, 
+.fb-like iframe {
+    width: 180px !important;
+    height: 25px !important;
+}
+
+/* -------------------------------
+* Global styles
+*/
 .mx-hidden {
     display: none;
 }
 
 /* -------------------------------
- * Coder
- */
+* New Widget
+*/
+.mx-new-widget .mx-github-triangle-container {
+    height: 35px;
+    width: 10px;
+    position: absolute;
+    left: 110px;
+    top: 45px;
+}
+.mx-new-widget .mx-github-triangle {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 17.5px 0 17.5px 10px;
+    border-color: transparent transparent transparent #616161;
+    position:absolute;
+}
+.mx-new-widget .mx-github-options {
+    background-color: #616161;
+    height: 500px;
+    width: 110px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.mx-new-widget {
+    width: 800px;
+    height: 500px;
+    background-color: #333;
+    border-radius: 0;
+    overflow: hidden !important;
+}
+.mx-new-widget .mx-code-snippets-modal-body {
+    height: 580px; 
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #333;
+    color: white;
+}
+.mx-new-widget .mx-code-snippets-modal-footer {
+    height: 40px;
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+}
+.mx-new-widget .dialog-message,
+.mx-new-widget .dialog-options {
+    color: white;
+}
+.mx-new-widget .mx-code-snippets-modal-body .dialog-message,
+.mx-new-widget .mx-code-snippets-modal-body .dialog-options,
+.mx-new-widget .mx-code-snippets-modal-body .line {
+    left: 130px;
+    width: 610px;
+}
+.mx-new-widget .mx-app-store-icon {
+    position:absolute;
+    left: 25px;
+    top: 30px;
+    width: 64px;
+    height: 64px;
+    background-image: url('../img/appstore.png');
+    border-radius: 10px;
+}
+.mx-new-widget .mx-github-status {
+    position: absolute;
+    left: 130px;
+    bottom: 90px;
+    width: 250px;
+    height: 30px;
+}
+.mx-new-widget .progress-bar {
+    background-color: rgba(0,20,75,0.5);
+    text-align: center;
+}
+.mx-new-widget .btn.primary {
+    background-color: #999;
+    color: white;
+    border: 1px solid #666;
+}
+.mx-new-widget .mx-code-snippets-modal-footer .btn.btn-primary,
+.mx-new-widget .mx-code-snippets-modal-footer .btn.primary {
+    background-color: #999;
+    color: white;
+    border: 1px solid #666;
+}
+
+/* -------------------------------
+* Coder
+*/
 .mx-coder-functions {
     max-height: 150px;
     overflow: scroll;
@@ -150,8 +254,8 @@
 }
 
 /* -------------------------------
- * Widget Workshop Course
- */
+* Widget Workshop Course
+*/
 .mx-build {
     margin-top: 5px;
     margin-bottom: 5px;
@@ -403,8 +507,8 @@
 }
 
 /* -------------------------------
- * Github
- */
+* Github
+*/
 .mx-indent {
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;

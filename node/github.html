@@ -1,15 +1,42 @@
-<div class="mockserver-shutdown-dialog template modal hide mx-code-snippets-modal-info mx-code-snippets-explain">
+<div class="mockserver-shutdown-dialog template modal hide mx-new-widget mx-code-snippets-explain">
     <div class="mx-wizard-window mx-wizard-0 mx-code-snippets-modal-body">
         <p class="dialog-message">
             {{title}}
         </p>
         <div class="line"></div>
         <div class="dialog-options">
-            <div class="mx-git-content">{{body}}</div>
+            <div class="mx-github-content">{{body}}
+            </div>
+            <!-- <script src="http://platform.linkedin.com/in.js" type="text/javascript">
+lang: en_US
+</script>
+<script type="IN/Share" data-url="http://mendix.github.io/WDPForBrackets/" data-counter="right"></script>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mendix.github.io/WDPForBrackets/" data-text="Mendix Widget Development Plugin For Brackets" data-via="createthewidget" data-related="createthewidget" data-hashtags="createthewidget">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id;
+js.src = "http://connect.facebook.net/en_US/sdk.js#xfbml=1&appId=1525430227746538&version=v2.0";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-like" data-href="http://mendix.github.io/WDPForBrackets/" data-layout="button_count" data-action="recommend" data-show-faces="true" data-share="true"></div> -->
+        </div>
+        <div class="mx-github-status">
+            <div class="progress mx-hidden" id="progressBarContainer">
+                <div class="progress-bar" role="progressbar" id="progressBar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0;">
+                    0%
+                </div>
+            </div>
+        </div>
+        <div class="mx-github-triangle-container"><div class="mx-github-triangle"></div></div>
+        <div class="mx-github-options">
+            <div class="mx-app-store-icon"></div>
         </div>
     </div>
-    
     <div class="mx-code-snippets-modal-footer">
-        <a href="#" class="dialog-button btn primary" data-button-id="ok">Close</a>
+        <a href="#" class="btn primary mx-github-ok-button" id="cloonBoilerplate">ok</a>
+        <a href="#" class="dialog-button btn" data-button-id="cancel">cancel</a>
     </div>
 </div>
