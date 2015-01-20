@@ -6,7 +6,7 @@ define(function (require, exports, module) {
     'use strict';
 
     // Variables to define the extension.
-    var MODULE_NAME                     = 'mendix.codesnippets',
+    var MODULE_NAME                     = 'mendix.wdpforbrackets',
         
         // External managers.
         ExtensionUtils                  = brackets.getModule('utils/ExtensionUtils'),
