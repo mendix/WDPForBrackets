@@ -1,12 +1,14 @@
-/*global mx, mxui, mendix, dojo, require, console, define, module */
-/**
+/*jslint vars: true, plusplus: true, devel: true, nomen: true, regexp: true, indent: 4, maxerr: 50 */
+/*global mx, mxui, mendix, dojo, require, console, define, module, window */
+/*mendix */
+/*
 
 	ReminderNotes
 	========================
 
 	@file      : ReminderNotes.js
 	@version   : 1.0
-	@author    : ...
+	@author    : Gerhard Richard Edens
 	@date      : Tuesday, November 18, 2014
 	@copyright : Mendix Technology BV
 	@license   : Apache License, Version 2.0, January 2004
@@ -17,27 +19,50 @@
 
 */
 
-(function() {
+require([
+
+    // Widget base and template
+    'mxui/widget/_WidgetBase', 'dijit/_TemplatedMixin',
+
+    // Extra DOJO librarie files
+    'mxui/dom', 'dojo/dom', 'dojo/query', 'dojo/dom-prop', 'dojo/dom-geometry', 'dojo/dom-class', 'dojo/dom-style', 'dojo/on', 'dojo/_base/lang', 'dojo/_base/declare',
+
+    // External libraries
+    'ReminderNotes/widget/lib/ReminderNotesAssists', 'ReminderNotes/widget/lib/jquery',
+
+    // Load templates
+    'dojo/text!ReminderNotes/widget/templates/ReminderNotes.html',
+    'dojo/text!ReminderNotes/widget/templates/ReminderSidebar.html',
+    'dojo/text!ReminderNotes/widget/templates/ReminderNote.html',
+
+    // Not needed inside widget but must be loaded
+    'ReminderNotes/widget/lib/GoogleFont'
+
+], function (_WidgetBase, _TemplatedMixin,
+
+              // Dojo and mendix 
+              mxuiDom, dojoDom, dojoQuery, dojoDomProp, dojoDomGeometry, dojoDomClass, dojoDomStyle, on, lang, declare,
+
+              // External libraries
+              MxWidgetAssist, _jQuery,
+
+              // Templates
+              _templateReminderNotes,
+              _templateReminderSidebar,
+              _templateReminderNote) {
+
+    // Defining use strict at the top of the widget.
     'use strict';
-    
-    // test
-    require([
 
-        'mxui/widget/_WidgetBase', 'dijit/_Widget', 'dijit/_TemplatedMixin',
-        'mxui/dom', 'dojo/dom', 'dojo/query', 'dojo/dom-prop', 'dojo/dom-geometry', 'dojo/dom-class', 'dojo/dom-style', 'dojo/on', 'dojo/_base/lang', 'dojo/_base/declare', 'dojo/text',
-        'ReminderNotes/widget/lib/ReminderNotesAssists', 'ReminderNotes/widget/lib/jquery',
-        'ReminderNotes/widget/lib/GoogleFont'
+    // Getting jQuery globally inside the widget.
+    var $ = _jQuery().jQuery(),
+        mxwx = new MxWidgetAssist();
 
-    ], function(_WidgetBase, _Widget, _Templated,
-                domMx, dom, domQuery, domProp, domGeom, domClass, domStyle, on, lang, declare, text,
-                MxWidgetAssist, _jQuery, _googleFont ) {
+    // Declaring the new widget.
+    return declare('ReminderNotes.widget.ReminderNotes', [ _WidgetBase, _TemplatedMixin ], {
 
-        return declare('ReminderNotes.widget.ReminderNotes', [ _WidgetBase, _Widget, _Templated, MxWidgetAssist, _jQuery, _googleFont ], {
         
-            
-        
-        });
 
     });
 
-}());
+});

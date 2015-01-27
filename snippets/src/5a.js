@@ -1,6 +1,5 @@
 // Uninitialize.
-            uninitialize : function(){
-                var $ = this.$;
-                $(this.domNode).off();
-                $(this.domNode).html('');
-            },
+        uninitialize : function () {
+            $(this.domNode).off();
+            $(this.domNode).html('');
+        },
