@@ -1,128 +1,125 @@
 _isEven : function isEven(n) {
-                return  (n%2 === 0);
-            },
-            
-            // Create notes on the interface
-            _renderReminderNotesResult : function(obj){
+            return (n % 2 === 0);
+        },
 
-                // Variables
-                var $ = this.$,
-                    templateNote = dojo.cache( 'ReminderNotes.widget.templates', 'ReminderNote.html' ),
-                    functionsToExecute = [],
-                    objsWithUsers = [],
-                    i = 0,
-                    renderNote = null;
+        // We do not create a function inside a loop, but outside.
+        _renderNote : function (note, i, notesWithUsers, callback) {
 
-                if(obj){
+            mx.data.action({
+                params          : {
+                    applyto     : 'selection',
+                    actionname  : this.mfToGetReminderGetCurrentUser,
+                    guids       : [note.getGuid()]
+                },
+                callback        : lang.hitch(this, function (note, i, callback, userObj) {
 
-                    // Collect notes!
-                    functionsToExecute = [];
-                    objsWithUsers = [];
-                    
-                    // We do not create a function inside a loop, but outside.
-                    renderNote = function(obj, i, callback) {
+                    this.subscribe({
+                        guid     : note.getGuid(),
+                        callback : lang.hitch(this, function (noteWithUser, guid) {
 
-                        mx.data.action({
-                            params          : {
-                                applyto     : 'selection',
-                                actionname  : this.mfToGetReminderGetCurrentUser,
-                                guids       : [obj.getGuid()]
-                            },
-                            callback        : lang.hitch(this, function( obj, i, callback, mxObj ) {
+                            var template = null,
+                                title = null,
+                                description = null;
 
-                                var handle = mx.data.subscribe({
-                                    guid     : obj.getGuid(),
-                                    callback : lang.hitch(this, function( objInfo, guid) {
+                            // Do nothing if we are saving ourselfs!
+                            if (this._doNotUpdate === true) {
 
-                                        var $ = this.$,
-                                            template = null,
-                                            title = null,
-                                            description = null;
+                                // Set to editible again for outer alteration!
+                                this._doNotUpdate = false;
 
-                                        // Do nothing if we are saving ourselfs!
-                                        if(this._doNotUpdate === true) {
+                            } else {
 
-                                            // Set to editible again for outer alteration!
-                                            this._doNotUpdate = false;
+                                // The object info is send to the internal function.
+                                template = this._refreshNote(noteWithUser, 1);
 
-                                        } else {
+                                // Render the new template
+                                title = $('#' + this.id + ' .mx-note.data-mx-note-' + this.mxform.id + '-' + noteWithUser.id + ' input[class=title]');
+                                description = $('#' + this.id + ' .mx-note.data-mx-note-' + this.mxform.id + '-' + noteWithUser.id + ' textarea[class=mainText]');
 
-                                            // The object info is send to the internal function.
-                                            template = this._refreshNote( objInfo , 1);
+                                title.val(noteWithUser.note.get(this.reminderNoteTitle));
+                                description.val(noteWithUser.note.get(this.reminderNoteDescription));
 
-                                            // Render the new template
-                                            title = $('#' + this.id + ' .mx-note.data-mx-note-' + this.mxform.id + '-' + objInfo.id + ' input[class=title]');
-                                            description = $('#' + this.id + ' .mx-note.data-mx-note-' + this.mxform.id + '-' + objInfo.id + ' textarea[class=mainText]');
-
-                                            title.val( objInfo.obj.get(this.reminderNoteTitle) );
-                                            description.val( objInfo.obj.get(this.reminderNoteDescription) );
-
-                                        }
+                            }
 
 
-                                    }, { obj: obj, user: mxObj[0], id: i } )
-                                });
+                        }, { note: note, user: userObj[0], id: i })
+                    });
 
-                                // Objects with a user that are related to the note.
-                                objsWithUsers.push({ obj: obj, user: mxObj[0], id: i, subscribed: handle });
+                    // Objects with a user that are related to the note.
+                    notesWithUsers.push({ note: note, user: userObj[0], id: i, subscribed: null });
 
-                                // Do callback
-                                if (typeof callback !== '') {
-                                    callback();
-                                }
+                    // Do callback
+                    if (typeof callback !== 'undefined') {
+                        callback();
+                    }
 
-                            }, obj, i, callback )
+                }, note, i, callback)
 
-                        }, this); 
+            }, this);
 
-                    };
+        },
 
-                    // Create mx collect object
-                    for(i = 0; i < obj.length; i++){
+        // Create notes on the interface
+        _renderReminderNotesResult : function (notes) {
 
-                        // Check the entire notes list if the note is on this page
-                        if(obj[i].get(this.reminderNotePage) === this.mxform.getTitle()){
+            // Variables
+            var templateNote = _templateReminderNote,
+                functionsToExecute = [],
+                notesWithUsers = [],
+                i = 0,
+                renderNote = null;
 
-                            // Anonymous function to get the users.
-                            functionsToExecute.push( lang.hitch(this, renderNote, obj[i], i));
+            if (notes) {
 
-                        }
+                // Collect notes!
+                functionsToExecute = [];
+                notesWithUsers = [];
+
+
+                // Create mx collect object
+                for (i = 0; i < notes.length; i++) {
+
+                    // Check the entire notes list if the note is on this page
+                    if (notes[i].get(this.reminderNotePage) === this.mxform.getTitle()) {
+
+                        // Anonymous function to get the users.
+                        functionsToExecute.push(lang.hitch(this, this._renderNote, notes[i], i, notesWithUsers));
 
                     }
 
-                    // Exectue functions and collect the end result!
-                    mendix.lang.collect(functionsToExecute, function(){
-
-                        // We may not drag and drop notes that are not from a certain user.
-                        this._remimderNotes = objsWithUsers;
-
-                        // Create HTML of posible
-                        var html = '',
-                            $ = this.$,
-                            mxwx = this._mxwx,
-                            newTemplateNote = '',
-                            i = 0;
-
-                        for (i = 0; i < objsWithUsers.length; ++i) {
-
-                            // The object info is send to the internal function.
-                            newTemplateNote = this._refreshNote( objsWithUsers[i], i );
-
-                            // Render to end result.
-                            html += newTemplateNote;
-
-                        }
-                        if(html !== ''){
-
-                            // Append the newly created HTML.
-                            $(this.domNode).append(html);
-
-                            // Setup draggable events for newly created HTML elements.
-                            this._setupEvents();
-                        }
-
-                    },this);
-
                 }
 
-            },
+                // Exectue functions and collect the end result!
+                mendix.lang.collect(functionsToExecute, function () {
+
+                    // We may not drag and drop notes that are not from a certain user.
+                    this._reminderNotes = notesWithUsers;
+
+                    // Create HTML of posible
+                    var html = '',
+                        newTemplateNote = '',
+                        i = 0;
+
+                    for (i = 0; i < notesWithUsers.length; ++i) {
+
+                        // The object info is send to the internal function.
+                        newTemplateNote = this._refreshNote(notesWithUsers[i], i);
+
+                        // Render to end result.
+                        html += newTemplateNote;
+
+                    }
+                    if (html !== '') {
+
+                        // Append the newly created HTML.
+                        $(this.domNode).append(html);
+
+                        // Setup draggable events for newly created HTML elements.
+                        this._setupEvents();
+                    }
+
+                }, this);
+
+            }
+
+        },

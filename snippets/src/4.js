@@ -1,25 +1,19 @@
-startup: function() {
+startup: function () {
 
-                // Check if you are started up!
-                if(this._startUp === null){
-                    this._startUp = false;
-                }
-                if(this._startUp === false){
-                    this._startUp = true;
-                } else {
-                    return;
-                }
+            // Check if you are started up!
+            if (this._startUp === null) {
+                this._startUp = false;
+            }
+            if (this._startUp === false) {
+                this._startUp = true;
+            } else {
+                return;
+            }
 
-                // Load google font
-                this._loadGoogleFont();
+            // Setup widget
+            this._setupWidget();
 
-                // Loading jQuery.
-                this._loadJQuery();
+            // Render periods.
+            this._refreshData();
 
-                // Setup widget
-                this._setupWidget();
-
-                // Render periods.
-                this._refreshData();
-
-            },
+        },

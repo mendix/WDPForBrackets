@@ -1,15 +1,14 @@
 // Refresh the interface we use.
-            _refreshInterface : function(){
-                var $ = this.$;
+        _refreshInterface : function () {
 
-                // Remove event and remove html from domNode.
-                $(this.domNode).off();
-                $(this.domNode).html('');
+            // Remove event and remove html from domNode.
+            $(this.domNode).off();
+            $(this.domNode).html('');
 
-                // Render output
-                this._renderReminderNotesResult(this._loadedData);
+            // Render output
+            this._renderReminderNotesResult(this._loadedData);
 
-                // Render sidebar
-                this._renderSideBar();
+            // Render sidebar
+            this._renderSideBar();
 
-            }
+        }

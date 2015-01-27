@@ -69,7 +69,13 @@
 		"file" : "src/3.js",
         "info" : "info/3.html",
 		"title" : "The 'update' DOJO function",
-		"description" : "Getting the context object."
+		"description" : "Getting the mendix object."
+	},
+    {
+		"file" : "src/3a.js",
+        "info" : "info/3a.html",
+		"title" : "The 'applyContext' DOJO function",
+		"description" : "Getting the context object to get the mendix object."
 	},
     {
 		"file" : "src/4.js",
@@ -94,18 +100,6 @@
         "info" : "info/6.html",
 		"title" : "The '_setupWidget' internal function.",
 		"description" : "We do our widget setup actions in here."
-	},
-    {
-		"file" : "src/7.js",
-        "info" : "info/7.html",
-		"title" : "The '_LoadGoogleFont' internal function",
-		"description" : "This will load the Google font into Mendix and into the custom widget."
-	},
-    {
-		"file" : "src/8.js",
-        "info" : "info/8.html",
-		"title" : "The '_loadJQuery' internal function",
-		"description" : "In this section we will load jQuery into the custom widget."
 	},
     {
 		"file" : "src/9.js",
