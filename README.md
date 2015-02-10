@@ -9,3 +9,6 @@ For more information on contributing to this repository visit [Contributing to a
 ## Typical usage scenario
 
 Use this within Brackets to get the right toolset to develop custom mendix widgets fast.
+
+## More information?
+Check out the [Wiki page] (https://github.com/mendix/WDPForBrackets/wiki)
