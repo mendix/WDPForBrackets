@@ -4,27 +4,36 @@
 /** Simple extension that adds a "File > Hello World" menu item. Inserts "Hello, world!" at cursor pos. */
 define(function (require, exports, module) {
     'use strict';
+    
+    var ExtensionManager = brackets.getModule('extensibility/ExtensionManager');
 
     // Variables to define the extension.
     var MODULE_NAME                     = 'mendix.wdpforbrackets',
         
+        // External libraries
+        JSBeautify                      = null,
+        CodeFolding                     = null,
+        JSIndentator                    = null,
+
         // External managers.
         ExtensionUtils                  = brackets.getModule('utils/ExtensionUtils'),
         AppInit                         = brackets.getModule('utils/AppInit'),
         
-        // Third party plugins
-        JSBeautify                      = require('extension/beautify/main'),
-        CodeFolding                     = require('extension/codefolding/main'),
+        // JSHint
         JSHint                          = require('extension/jshint/main'),
-        JSMinify                        = require('extension/brackets-minifier/main'),
-        JSIndentator                    = require('extension/brackets-indentator/main'),
         
         // Snippets
         MendixGitHubManager             = require('lib/MendixGitHubManager'),
         MendixWorkshopManager           = require('lib/MendixWorkshopManager'),
         MendixCodeManager               = require('lib/MendixCodeManager'),
         MendixWorkspaceManager          = require('lib/MendixWorkspaceManager');
-    
+
+    if (typeof ExtensionManager.extensions['mendix.uxforbrackets'] === 'undefined') {
+        // Only load the external libraries
+        JSBeautify                      = require('extension/beautify/main');
+        CodeFolding                     = require('extension/codefolding/main');
+        JSIndentator                    = require('extension/brackets-indentator/main');
+    }
     
     // Load CSS
     AppInit.htmlReady(function () {
