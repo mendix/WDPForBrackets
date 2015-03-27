@@ -60,7 +60,6 @@ define(function (require, exports, module) {
 
                     // Create the workshop snippets.
                     MendixWorkshopManager.setupSnippets();
-                    MendixWorkshopManager.panel.show();
 
                     /**
                      * Mendix Workspace Manager.
