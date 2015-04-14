@@ -3,7 +3,7 @@
     "title": "Widget Development Plugin for Adobe Brackets",
     "description": "This extension turns Adobe Brackets into an IDE for creating Custom Widgets for the Mendix platform.",
     "homepage": "https://github.com/mendix/WDPForBrackets",
-    "version": "1.0.2",
+    "version": "1.0.4",
     "author": "Gerhard Richard Edens",
     "license": "Apache 2",
     "engines": {
