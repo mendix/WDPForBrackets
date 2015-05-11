@@ -14,3 +14,9 @@
 
         // Subscriptions
         _doNotUpdate : false,
+            
+        // Mobile event emulator
+        _clickEvent: null,
+        _mouseDownEvent: null,
+        _mouseUpEvent: null,
+        _mouseOutEvent: null,

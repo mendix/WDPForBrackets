@@ -1,5 +1,5 @@
 /*jslint vars: true, plusplus: true, devel: true, nomen: true, regexp: true, indent: 4, maxerr: 50 */
-/*global mx, mxui, mendix, dojo, require, console, define, module, window */
+/*global mx, mxui, mendix, dojo, declare, console, define, module, window, jQuery, document */
 /*mendix */
 /*
 
@@ -19,7 +19,7 @@
 
 */
 
-require([
+define([
 
     // Widget base and template
     'mxui/widget/_WidgetBase', 'dijit/_TemplatedMixin',
@@ -55,7 +55,7 @@ require([
     'use strict';
 
     // Getting jQuery globally inside the widget.
-    var $ = _jQuery().jQuery(),
+    var $ = jQuery.noConflict(true),
         mxwx = new MxWidgetAssist();
 
     // Declaring the new widget.

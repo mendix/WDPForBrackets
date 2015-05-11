@@ -2,6 +2,7 @@ applyContext: function (context, callback) {
 
             // Check if we have data.
             if (context === null || context.getTrackId() === '') {
+                
                 if (this._debug) {
                     console.log('The Reminder Notes has no data!');
                 }
@@ -9,6 +10,7 @@ applyContext: function (context, callback) {
                 if (typeof callback !== 'undefined') {
                     callback();
                 }
+                
             } else {
 
                 mx.data.get({
