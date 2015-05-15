@@ -11,8 +11,6 @@ define(function (require, exports, module) {
     var MODULE_NAME                     = 'mendix.wdpforbrackets',
         
         // External libraries
-        JSBeautify                      = null,
-        CodeFolding                     = null,
         JSIndentator                    = null,
 
         // External managers.
@@ -30,8 +28,6 @@ define(function (require, exports, module) {
 
     if (typeof ExtensionManager.extensions['mendix.uxforbrackets'] === 'undefined') {
         // Only load the external libraries
-        JSBeautify                      = require('extension/beautify/main');
-        CodeFolding                     = require('extension/codefolding/main');
         JSIndentator                    = require('extension/brackets-indentator/main');
     }
     
